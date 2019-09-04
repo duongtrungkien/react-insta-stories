@@ -17,6 +17,14 @@ class Container extends React.PureComponent {
     this.height = props.height
   }
 
+  shouldComponentUpdate(nextProps) {
+    if (this.props.stories[0].url !== nextProps.stories[0].url) {
+      return true
+    }
+
+    return false
+  }
+
   pause = (action, bufferAction) => {
     this.setState({ pause: action === 'pause', bufferAction })
   }
@@ -36,7 +44,7 @@ class Container extends React.PureComponent {
     } else {
       this.updateNextStoryId()
     }
-  };
+  }
 
   updateNextStoryIdForLoop = () => {
     this.setState({
@@ -54,7 +62,7 @@ class Container extends React.PureComponent {
     }
   }
 
-  debouncePause = (e) => {
+  debouncePause = e => {
     e.preventDefault()
     this.mousedownId = setTimeout(() => {
       this.pause('pause')
@@ -84,7 +92,12 @@ class Container extends React.PureComponent {
 
   render() {
     return (
-      <div style={{ ...styles.container, ...{ width: this.width, height: this.height } }}>
+      <div
+        style={{
+          ...styles.container,
+          ...{ width: this.width, height: this.height }
+        }}
+      >
         <ProgressArray
           next={this.next}
           pause={this.state.pause}
@@ -93,10 +106,17 @@ class Container extends React.PureComponent {
           length={this.props.stories.map((_, i) => i)}
           defaultInterval={this.defaultInterval}
           currentStory={this.props.stories[this.state.currentId]}
-          progress={{ id: this.state.currentId, completed: this.state.count / ((this.props.stories[this.state.currentId] && this.props.stories[this.state.currentId].duration) || this.defaultInterval) }}
+          progress={{
+            id: this.state.currentId,
+            completed:
+              this.state.count /
+              ((this.props.stories[this.state.currentId] &&
+                this.props.stories[this.state.currentId].duration) ||
+                this.defaultInterval)
+          }}
         />
         <Story
-          ref={s => this.story = s}
+          ref={s => (this.story = s)}
           action={this.pause}
           bufferAction={this.state.bufferAction}
           height={this.height}
@@ -109,8 +129,20 @@ class Container extends React.PureComponent {
           storyContentStyles={this.props.storyContentStyles}
         />
         <div style={styles.overlay}>
-          <div style={{ width: '50%', zIndex: 999 }} onTouchStart={this.debouncePause} onTouchEnd={e => this.mouseUp(e, 'previous')} onMouseDown={this.debouncePause} onMouseUp={(e) => this.mouseUp(e, 'previous')} />
-          <div style={{ width: '50%', zIndex: 999 }} onTouchStart={this.debouncePause} onTouchEnd={e => this.mouseUp(e, 'next')} onMouseDown={this.debouncePause} onMouseUp={(e) => this.mouseUp(e, 'next')} />
+          <div
+            style={{ width: '50%', zIndex: 999 }}
+            onTouchStart={this.debouncePause}
+            onTouchEnd={e => this.mouseUp(e, 'previous')}
+            onMouseDown={this.debouncePause}
+            onMouseUp={e => this.mouseUp(e, 'previous')}
+          />
+          <div
+            style={{ width: '50%', zIndex: 999 }}
+            onTouchStart={this.debouncePause}
+            onTouchEnd={e => this.mouseUp(e, 'next')}
+            onMouseDown={this.debouncePause}
+            onMouseUp={e => this.mouseUp(e, 'next')}
+          />
         </div>
       </div>
     )
@@ -130,10 +162,8 @@ const styles = {
     width: 'inherit',
     display: 'flex'
   },
-  left: {
-  },
-  right: {
-  }
+  left: {},
+  right: {}
 }
 
 Container.propTypes = {

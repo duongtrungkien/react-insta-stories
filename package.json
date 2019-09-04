@@ -1,10 +1,13 @@
 {
-  "name": "react-insta-stories",
-  "version": "1.5.2",
+  "name": "kien-react-insta-stories",
+  "version": "1.0.0",
   "description": "A React component for Instagram like stories",
   "author": "mohitk05",
   "license": "MIT",
-  "repository": "mohitk05/react-insta-stories",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohitk05/react-insta-stories.git"
+  },
   "homepage": "https://mohitk05.github.io/react-insta-stories/",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -73,5 +76,8 @@
   "collective": {
     "type": "opencollective",
     "url": "https://opencollective.com/react-insta-stories"
+  },
+  "bugs": {
+    "url": "https://github.com/mohitk05/react-insta-stories/issues"
   }
 }
