@@ -19,6 +19,7 @@ class Container extends React.PureComponent {
 
   shouldComponentUpdate(nextProps) {
     if (this.props.stories[0].url !== nextProps.stories[0].url) {
+      this.setState({ currentId: 0 })
       return true
     }
 
