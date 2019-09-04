@@ -9,6 +9,7 @@ export default class ReactInstaStories extends Component {
     this.play = this.play.bind(this)
     this.previous = this.previous.bind(this)
     this.next = this.next.bind(this)
+    this.resetStory = this.resetStory.bind(this)
   }
 
   componentDidMount() {
@@ -18,6 +19,13 @@ export default class ReactInstaStories extends Component {
         i.src = typeof s === 'object' ? s.url : s
       }
     })
+  }
+
+  resetStory() {
+    if (this.c) {
+      this.c.resetState()
+      return true
+    } else return false
   }
 
   pause() {
@@ -58,7 +66,7 @@ export default class ReactInstaStories extends Component {
     return (
       <div>
         <Container
-          ref={c => this.c = c}
+          ref={c => (this.c = c)}
           stories={this.props.stories}
           defaultInterval={this.props.defaultInterval}
           width={this.props.width}

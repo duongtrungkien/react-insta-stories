@@ -17,14 +17,8 @@ class Container extends React.PureComponent {
     this.height = props.height
   }
 
-  shouldComponentUpdate(nextProps) {
-    console.log(nextProps)
-    if (this.props.stories[0].url !== nextProps.stories[0].url) {
-      this.setState({ currentId: 0 })
-      return true
-    }
-
-    return false
+  resetState() {
+    this.setState({ currentId: 0 })
   }
 
   pause = (action, bufferAction) => {
