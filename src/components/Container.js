@@ -55,6 +55,8 @@ class Container extends React.PureComponent {
         currentId: this.state.currentId + 1,
         count: 0
       })
+    } else {
+      this.props.handleNextUser()
     }
   }
 
@@ -129,12 +131,16 @@ class Container extends React.PureComponent {
             style={{ width: '50%', zIndex: 999 }}
             onTouchStart={this.debouncePause}
             onTouchEnd={e => {
-              this.props.onPressPrevious()
+              if (this.state.currentId === 0) {
+                return this.props.handlePreviousUser()
+              }
               return this.mouseUp(e, 'previous')
             }}
             onMouseDown={this.debouncePause}
             onMouseUp={e => {
-              this.props.onPressPrevious()
+              if (this.state.currentId === 0) {
+                return this.props.handlePreviousUser()
+              }
               return this.mouseUp(e, 'previous')
             }}
           />
@@ -142,12 +148,18 @@ class Container extends React.PureComponent {
             style={{ width: '50%', zIndex: 999 }}
             onTouchStart={this.debouncePause}
             onTouchEnd={e => {
-              this.props.onPressNext()
+              if (this.state.currentId === this.props.stories.length - 1) {
+                return this.props.handleNextUser()
+              }
+
               return this.mouseUp(e, 'next')
             }}
             onMouseDown={this.debouncePause}
             onMouseUp={e => {
-              this.props.onPressNext()
+              if (this.state.currentId === this.props.stories.length - 1) {
+                return this.props.handleNextUser()
+              }
+
               return this.mouseUp(e, 'next')
             }}
           />
@@ -183,8 +195,8 @@ Container.propTypes = {
   header: PropTypes.element,
   storyContentStyles: PropTypes.object,
   loop: PropTypes.bool,
-  onPressNext: PropTypes.Function,
-  onPressPrevious: PropTypes.Function
+  handleNextUser: PropTypes.Function,
+  handlePreviousUser: PropTypes.Function
 }
 
 Container.defaultProps = {
