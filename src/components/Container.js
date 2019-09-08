@@ -128,16 +128,28 @@ class Container extends React.PureComponent {
           <div
             style={{ width: '50%', zIndex: 999 }}
             onTouchStart={this.debouncePause}
-            onTouchEnd={e => this.mouseUp(e, 'previous')}
+            onTouchEnd={e => {
+              this.props.onPressPrevious()
+              return this.mouseUp(e, 'previous')
+            }}
             onMouseDown={this.debouncePause}
-            onMouseUp={e => this.mouseUp(e, 'previous')}
+            onMouseUp={e => {
+              this.props.onPressPrevious()
+              return this.mouseUp(e, 'previous')
+            }}
           />
           <div
             style={{ width: '50%', zIndex: 999 }}
             onTouchStart={this.debouncePause}
-            onTouchEnd={e => this.mouseUp(e, 'next')}
+            onTouchEnd={e => {
+              this.props.onPressNext()
+              return this.mouseUp(e, 'next')
+            }}
             onMouseDown={this.debouncePause}
-            onMouseUp={e => this.mouseUp(e, 'next')}
+            onMouseUp={e => {
+              this.props.onPressNext()
+              return this.mouseUp(e, 'next')
+            }}
           />
         </div>
       </div>
@@ -170,7 +182,9 @@ Container.propTypes = {
   loader: PropTypes.element,
   header: PropTypes.element,
   storyContentStyles: PropTypes.object,
-  loop: PropTypes.bool
+  loop: PropTypes.bool,
+  onPressNext: PropTypes.Function,
+  onPressPrevious: PropTypes.Function
 }
 
 Container.defaultProps = {

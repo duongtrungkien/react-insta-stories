@@ -75,6 +75,8 @@ export default class ReactInstaStories extends Component {
           header={this.props.header}
           storyContentStyles={this.props.storyStyles}
           loop={this.props.loop}
+          onPressPrevious={this.props.onPressPrevious}
+          onPressNext={this.props.onPressNext}
         />
       </div>
     )
@@ -93,5 +95,7 @@ ReactInstaStories.propTypes = {
   loader: PropTypes.element,
   header: PropTypes.element,
   storyStyles: PropTypes.object,
-  loop: PropTypes.bool
+  loop: PropTypes.bool,
+  onPressNext: PropTypes.Function,
+  onPressPrevious: PropTypes.Function
 }
