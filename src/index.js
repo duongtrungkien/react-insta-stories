@@ -75,8 +75,8 @@ export default class ReactInstaStories extends Component {
           header={this.props.header}
           storyContentStyles={this.props.storyStyles}
           loop={this.props.loop}
-          onPressPrevious={this.props.handlePreviousUser}
-          onPressNext={this.props.handleNextUser}
+          handlePreviousUser={this.props.handlePreviousUser}
+          handleNextUser={this.props.handleNextUser}
         />
       </div>
     )
