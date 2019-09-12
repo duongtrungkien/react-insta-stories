@@ -1,14 +1,14 @@
 {
-  "name": "react-stories",
+  "name": "@reactrondev/@reactrondev/react-stories",
   "version": "1.0.0",
   "description": "A React component for Instagram like stories",
   "author": "Reactron Technologies Ltd",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/reactrondev/react-stories.git"
+    "url": "git+https://github.com/reactrondev/@reactrondev/react-stories.git"
   },
-  "homepage": "https://reactrondev.github.io/react-stories/",
+  "homepage": "https://reactrondev.github.io/@reactrondev/react-stories/",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
@@ -69,6 +69,6 @@
     "dist"
   ],
   "bugs": {
-    "url": "https://github.com/reactrondev/react-stories/issues"
+    "url": "https://github.com/reactrondev/@reactrondev/react-stories/issues"
   }
 }
