@@ -1,6 +1,6 @@
 {
-  "name": "react-insta-stories-example",
-  "homepage": "https://mohitk05.github.io/react-insta-stories",
+  "name": "react-stories-example",
+  "homepage": "https://reactrondev.github.io/react-stories",
   "version": "0.0.0",
   "license": "MIT",
   "private": true,
@@ -9,7 +9,7 @@
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-insta-stories": "file:..",
+    "react-stories": "file:..",
     "react-scripts": "^1.1.4",
     "react-transition-group": "^2.6.1"
   },
